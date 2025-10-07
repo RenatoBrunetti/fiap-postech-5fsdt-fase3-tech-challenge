@@ -8,7 +8,7 @@ import { loginRequest } from '../queries';
 interface UserData {
   username: string;
   userId: string;
-  role: string;
+  role: { id: string; name: string };
 }
 
 const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -38,7 +38,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     setUser({
       username: loginResponse.username,
       userId: loginResponse.id,
-      role: loginResponse.role.name,
+      role: loginResponse.role,
     });
     setIsLoggedIn(true);
     localStorage.setItem('user', JSON.stringify(loginResponse));

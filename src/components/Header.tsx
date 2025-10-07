@@ -21,6 +21,11 @@ const HeaderInner = styled.div`
   align-items: center;
   width: 100%;
   max-width: ${({ theme }) => theme.breakpoints.xl};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+    gap: 16px;
+  }
 `;
 
 const HeaderLeft = styled(Link)`
@@ -49,12 +54,7 @@ const HeaderRight = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 8px;
-
-  span {
-    color: ${({ theme }) => theme.colors.light};
-    font-size: 1rem;
-  }
+  gap: 10px;
 `;
 
 const HeaderRightButton = styled.button`
@@ -76,6 +76,22 @@ const HeaderRightButton = styled.button`
   }
 `;
 
+const HeaderRightUserInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2px;
+`;
+
+const HeaderRightUserInfoSpan = styled.span<{ type: string }>`
+  color: ${({ theme, type }) =>
+    type === 'role' ? theme.colors.primaryHover : theme.colors.light};
+  font-size: 0.9rem;
+  font-weight: ${({ type }) => (type === 'role' ? '600' : '400')};
+  line-height: 1;
+`;
+
 interface HeaderProps {
   theme: string;
   toggleTheme: () => void;
@@ -84,6 +100,12 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
   const { user, logout, isLoggedIn } = useAuth();
 
+  const role =
+    user?.role?.name === 'admin'
+      ? 'Professor'
+      : user?.role?.name === 'student'
+        ? 'Aluno'
+        : 'Usuário';
   return (
     <HeaderContainer>
       <HeaderInner>
@@ -92,7 +114,16 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
           <h1>Challenge Blog</h1>
         </HeaderLeft>
         <HeaderRight>
-          {user && <span>Olá, {user.username}</span>}
+          {user && (
+            <HeaderRightUserInfo>
+              <HeaderRightUserInfoSpan type="name">
+                Olá, {user.username}
+              </HeaderRightUserInfoSpan>
+              <HeaderRightUserInfoSpan type="role">
+                {role}
+              </HeaderRightUserInfoSpan>
+            </HeaderRightUserInfo>
+          )}
           {isLoggedIn && (
             <HeaderRightButton onClick={logout} aria-label="Sair">
               <LogOut />

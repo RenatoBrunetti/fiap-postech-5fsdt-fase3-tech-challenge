@@ -41,6 +41,10 @@ const PostTableRow = styled.div<{ header: string }>`
   &:first-child {
     border-top: 1px solid ${({ theme }) => theme.colors.input.border};
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+  }
 `;
 
 const PostTableCell = styled.div`
@@ -52,9 +56,14 @@ const PostTableCell = styled.div`
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  font-size: 1rem;
 
   &:last-child {
     border-right: none;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 0.85rem !important;
   }
 `;
 
@@ -111,7 +120,7 @@ interface PostTableProps {
 }
 
 const PostTable: React.FC<PostTableProps> = ({ role, posts, handleDelete }) => {
-  const numberOfCharacters = 50;
+  const numberOfCharacters = 20;
 
   return (
     <PostTableInner>
@@ -127,7 +136,7 @@ const PostTable: React.FC<PostTableProps> = ({ role, posts, handleDelete }) => {
           posts.map((post, index) => (
             <PostTableRow key={index} header="false">
               <PostLink to={`/post/${post.id}`} state={{ role }}>
-                {post.title}
+                {post.title.slice(0, numberOfCharacters).concat('...')}
               </PostLink>
               <PostLink to={`/post/${post.id}`} state={{ role }}>
                 {post.content.slice(0, numberOfCharacters).concat('...')}

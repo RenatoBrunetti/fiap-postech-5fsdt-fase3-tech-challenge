@@ -17,16 +17,17 @@ import Label from '../components/Form/Label';
 import Input from '../components/Form/Input';
 import ErrorText from '../components/Form/ErrorText';
 import Button from '../components/Form/Button';
+import Select from '../components/Form/Select';
 
 // API Queries
 import api from '../api';
 import { createUserRequest, getRolesRequest } from '../queries';
 
-// Types
-import type { Role } from '../types';
-
 // Hooks
 import useAuth from '../hooks/useAuth';
+
+// Types
+import type { Role } from '../types';
 
 const CreateContainer = styled.div`
   display: flex;
@@ -69,25 +70,22 @@ const CreateTop = styled.div`
 interface CreateUserValues {
   username: string;
   password: string;
+  roleId: string;
 }
 
 const CreateUser: React.FC = () => {
-  const { user } = useAuth();
-  const role = user?.role || 'user';
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const initialUserRequest = useRef(false);
 
   const [roles, setRoles] = useState<Role[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
-    if (role !== 'admin') navigate('/');
     if (initialUserRequest.current) return;
     handleGetRoles();
     initialUserRequest.current = true;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleGetRoles = () => {
@@ -103,14 +101,9 @@ const CreateUser: React.FC = () => {
     values: CreateUserValues,
     { resetForm }: FormikHelpers<CreateUserValues>,
   ) => {
-    if (!roles || !roles.length) return;
-    const adminRole = roles.find((role) => role.name === 'admin');
-    if (!adminRole) return;
     const createUser = async () => {
-      await createUserRequest(api, {
-        ...values,
-        roleId: adminRole.id,
-      });
+      await createUserRequest(api, values);
+      login({ username: values.username, password: values.password });
       resetForm();
       navigate('/');
     };
@@ -120,6 +113,7 @@ const CreateUser: React.FC = () => {
   const initialValues = {
     username: '',
     password: '',
+    roleId: '',
   };
 
   const validationSchema = Yup.object({
@@ -127,6 +121,7 @@ const CreateUser: React.FC = () => {
     password: Yup.string()
       .required('A senha é obrigatória')
       .min(6, 'A senha deve ter pelo menos 6 caracteres'),
+    roleId: Yup.string().required('O papel é obrigatório'),
   });
 
   if (isLoading) return <Loader />;
@@ -137,7 +132,7 @@ const CreateUser: React.FC = () => {
         <CreateTop>
           <BackButtonNavigation />
         </CreateTop>
-        <h1>Criar Autor</h1>
+        <h1>Criar Usuário</h1>
         <Formik<CreateUserValues>
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -158,6 +153,22 @@ const CreateUser: React.FC = () => {
                 type="password"
               />
               <ErrorMessage name="password" component={ErrorText} />
+            </Fieldset>
+            <Fieldset>
+              <Label htmlFor="roleId">Papel</Label>
+              <FormikField as={Select} name="roleId" id="roleId">
+                <option value="">Selecione um papel</option>
+                {roles.map((role) => (
+                  <option key={role.id} value={role.id}>
+                    {role.name === 'admin'
+                      ? 'Professor'
+                      : role.name === 'student'
+                        ? 'Aluno'
+                        : role.name}
+                  </option>
+                ))}
+              </FormikField>
+              <ErrorMessage name="role" component={ErrorText} />
             </Fieldset>
             <Button type="submit">Enviar</Button>
           </Form>

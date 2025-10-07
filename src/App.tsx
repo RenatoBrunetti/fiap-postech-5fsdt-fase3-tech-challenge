@@ -74,6 +74,7 @@ function App() {
             <Main>
               <Routes>
                 <Route path="/login" element={<Login />} />
+                <Route path="/create-user" element={<CreateUser />} />
                 <Route path="/" element={<PrivateRoute element={<Home />} />} />
                 <Route
                   path="/create"
@@ -87,7 +88,6 @@ function App() {
                   path="/edit/:postId"
                   element={<PrivateRoute element={<Edit />} />}
                 />
-                <Route path="/create-user" element={<CreateUser />} />
               </Routes>
             </Main>
           </AppContainer>

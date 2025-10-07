@@ -56,7 +56,7 @@ const HomeTop = styled.div`
 
 const Home: React.FC = () => {
   const { user } = useAuth();
-  const role = user?.role || 'user';
+  const role = user?.role?.name || 'student';
 
   const initialHomeRequest = useRef(false);
 
@@ -70,14 +70,12 @@ const Home: React.FC = () => {
   }, []);
 
   const handleGetPosts = () => {
-    setTimeout(() => {
-      const fetchPosts = async () => {
-        const postsResponse = await getPostsRequest(api);
-        setPosts(postsResponse);
-      };
-      fetchPosts();
-      setIsLoading(false);
-    }, 1000);
+    const fetchPosts = async () => {
+      const postsResponse = await getPostsRequest(api);
+      setPosts(postsResponse);
+    };
+    fetchPosts();
+    setIsLoading(false);
   };
 
   const handleDelete = (id: string, userId: string) => {

@@ -17,9 +17,11 @@ import Label from '../components/Form/Label';
 import Input from '../components/Form/Input';
 import ErrorText from '../components/Form/ErrorText';
 import Button from '../components/Form/Button';
+import CreateUserButton from '../components/CreateUserButton';
 
 const LoginContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -33,13 +35,29 @@ const LoginInner = styled.div`
   background-color: ${({ theme }) => theme.colors.contrast};
   width: 300px;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid ${({ theme }) => theme.colors.input.border};
   border-radius: 5px;
 
   h2 {
     margin-bottom: 16px;
     font-size: 1.5rem;
     color: ${({ theme }) => theme.colors.title};
+  }
+`;
+
+const CreateUserContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: ${({ theme }) => theme.colors.text};
+  text-decoration: none;
+  margin-top: 16px;
+
+  span {
+    text-align: center;
+    color: ${({ theme }) => theme.colors.text};
+    font-size: 0.75rem;
   }
 `;
 
@@ -104,6 +122,15 @@ const Login: React.FC = () => {
           </Form>
         </Formik>
       </LoginInner>
+
+      <CreateUserContainer>
+        <span>
+          Não tem uma conta?
+          <br />
+          Crie uma agora!
+        </span>
+        <CreateUserButton />
+      </CreateUserContainer>
     </LoginContainer>
   );
 };

@@ -14,7 +14,13 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["styled-components"],
+    "types": [
+      "styled-components",
+      "jest",
+      "@testing-library/jest-dom",
+      "vite/client",
+      "vitest/globals"
+    ],
 
     /* Linting */
     "strict": true,

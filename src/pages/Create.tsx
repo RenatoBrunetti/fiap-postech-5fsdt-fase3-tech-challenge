@@ -71,7 +71,7 @@ interface CreatePostValues {
 
 const Create: React.FC = () => {
   const { user } = useAuth();
-  const role = user?.role || 'user';
+  const role = user?.role?.name || 'student';
 
   const initialCreateRequest = useRef(false);
 

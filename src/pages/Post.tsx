@@ -54,7 +54,7 @@ const PostTop = styled.div`
 
 const Post: React.FC = () => {
   const { user } = useAuth();
-  const role = user?.role || 'user';
+  const role = user?.role?.name || 'student';
 
   const { postId } = useParams<{ postId: string }>();
 

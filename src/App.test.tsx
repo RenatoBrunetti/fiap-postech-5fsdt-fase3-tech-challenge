@@ -15,6 +15,6 @@ describe('App Component', () => {
 
   it('should render the component correctly', () => {
     render(<App />);
-    expect(screen.getByText('Cadastro')).toBeInTheDocument();
+    expect(screen.getByText('Login')).toBeInTheDocument();
   });
 });

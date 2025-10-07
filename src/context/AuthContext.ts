@@ -2,7 +2,11 @@ import { createContext } from 'react';
 
 interface AuthContextType {
   isLoggedIn: boolean;
-  user: { username: string; userId: string; role: string } | null;
+  user: {
+    username: string;
+    userId: string;
+    role: { id: string; name: string };
+  } | null;
   login: ({
     username,
     password,

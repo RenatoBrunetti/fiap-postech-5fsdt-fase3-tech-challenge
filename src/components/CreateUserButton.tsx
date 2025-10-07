@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { User } from 'lucide-react';
+import { UserPlus } from 'lucide-react';
 
 const CreateButton = styled(Link)`
   display: flex;
@@ -12,15 +12,16 @@ const CreateButton = styled(Link)`
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.25s ease-in-out;
-  font-size: 1rem;
   color: ${({ theme }) => theme.colors.light};
   background: ${({ theme }) => theme.colors.warning};
   outline: none;
   text-decoration: none;
   white-space: nowrap;
+  margin-top: 8px;
 
   span {
     margin-left: 8px;
+    color: ${({ theme }) => theme.colors.light} !important;
   }
 
   &:hover {
@@ -36,8 +37,8 @@ const CreateButton = styled(Link)`
 const CreateUserButton: React.FC = () => {
   return (
     <CreateButton to="/create-user">
-      <User />
-      <span>Novo Autor</span>
+      <UserPlus />
+      <span>Novo Usuário</span>
     </CreateButton>
   );
 };
