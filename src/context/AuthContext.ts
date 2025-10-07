@@ -3,8 +3,8 @@ import { createContext } from 'react';
 interface AuthContextType {
   isLoggedIn: boolean;
   user: {
+    id: string;
     username: string;
-    userId: string;
     role: { id: string; name: string };
   } | null;
   login: ({

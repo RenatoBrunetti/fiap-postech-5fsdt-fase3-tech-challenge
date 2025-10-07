@@ -91,9 +91,9 @@ const Create: React.FC = () => {
     values: CreatePostValues,
     { resetForm }: FormikHelpers<CreatePostValues>,
   ) => {
-    if (!user?.userId) return;
+    if (!user?.id) return;
     const createPost = async () => {
-      await createPostRequest(api, { ...values, userId: user.userId });
+      await createPostRequest(api, { ...values, userId: user.id });
       resetForm();
       navigate('/');
     };

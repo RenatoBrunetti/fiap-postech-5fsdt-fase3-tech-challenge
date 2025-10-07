@@ -84,9 +84,9 @@ const Home: React.FC = () => {
       setIsLoading(true);
       const deletePost = async () => {
         await deletePostRequest(api, id, userId);
+        handleGetPosts();
       };
       deletePost();
-      handleGetPosts();
     }
   };
 

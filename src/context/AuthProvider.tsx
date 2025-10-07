@@ -6,8 +6,8 @@ import api from '../api';
 import { loginRequest } from '../queries';
 
 interface UserData {
+  id: string;
   username: string;
-  userId: string;
   role: { id: string; name: string };
 }
 
@@ -36,8 +36,8 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       return;
     }
     setUser({
+      id: loginResponse.id,
       username: loginResponse.username,
-      userId: loginResponse.id,
       role: loginResponse.role,
     });
     setIsLoggedIn(true);
