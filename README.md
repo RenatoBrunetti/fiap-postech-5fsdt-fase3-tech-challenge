@@ -131,9 +131,7 @@ O Render é uma plataforma de cloud moderna que facilita o deploy de aplicaçõe
 
 ### + Requisitos
 
-1. Instalar o Docker
-2. Instalar o Docker Compose
-3. Instalar o Node.js
+1. Instalar o Node.js
 
 ### + Execução
 
@@ -147,6 +145,7 @@ A aplicação está hospedada na plataforma Render e está temporariamente dispo
 Após esse carregamento inicial, os endpoints da API funcionam normalmente. Recomendamos aguardar esse tempo na primeira requisição e, se necessário, realizar novas chamadas após a ativação do serviço.
 
 **API URL**: https://challenge-2wqh.onrender.com
+
 **WEB URL**: https://fiap-postech-5fsdt-fase3-tech-challenge.onrender.com
 
 # ⛬ Experiências e Desafios
