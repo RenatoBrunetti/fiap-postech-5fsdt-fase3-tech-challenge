@@ -97,7 +97,6 @@ O GitHub Actions é a ferramenta de automação do GitHub que permite configurar
   Um formatador de código que garante que todo o código-fonte da aplicação seja formatado de forma consistente. Ele elimina discussões sobre estilos de código, promovendo um ambiente de desenvolvimento mais colaborativo e focado na lógica de negócio.
 </details>
 <details>
-<details>
   <summary>Axios</summary>
   Um cliente HTTP baseado em Promises que opera tanto em ambientes Node.js quanto em navegadores (browsers). Ele facilita a realização de requisições assíncronas (GET, POST, PUT, DELETE, etc.) ao backend, oferecendo recursos cruciais de engenharia como interceptores (para manipulação global de requisições e respostas), cancelamento de requisições e transformação automática de dados JSON, o que simplifica a camada de serviço/dados da aplicação.
 </details>
