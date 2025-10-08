@@ -25,4 +25,7 @@ export default defineConfig({
     globals: true,
     setupFiles: './tests/setup.ts',
   },
+  preview: {
+    allowedHosts: ['fiap-postech-5fsdt-fase3-tech-challenge.onrender.com'],
+  },
 });

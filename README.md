@@ -40,6 +40,14 @@ O GitHub Actions é a ferramenta de automação do GitHub que permite configurar
 
 ![GitHub Actions!](/public/images/github-actions.png 'GitHub Actions') _"GitHub Actions"_
 
+### + Render
+
+O Render é uma plataforma de cloud moderna que facilita o deploy de aplicações com pipelines automatizadas. No projeto, foi utilizado para publicar o serviço Web em ambiente de produção, com integração direto com o GitHub.
+
+🔗 [Teste a aplicação em tempo real](https://fiap-postech-5fsdt-fase3-tech-challenge.onrender.com) _"Link temporário para avaliação"_
+
+![Render!](/public/images/render.png 'Render') _"Render"_
+
 ## → Tecnologias utilizadas
 
 > Clique para visualizar a descrição de cada item
@@ -139,7 +147,7 @@ A aplicação está hospedada na plataforma Render e está temporariamente dispo
 Após esse carregamento inicial, os endpoints da API funcionam normalmente. Recomendamos aguardar esse tempo na primeira requisição e, se necessário, realizar novas chamadas após a ativação do serviço.
 
 **API URL**: https://challenge-2wqh.onrender.com
-**WEB URL**:
+**WEB URL**: https://fiap-postech-5fsdt-fase3-tech-challenge.onrender.com
 
 # ⛬ Experiências e Desafios
 
