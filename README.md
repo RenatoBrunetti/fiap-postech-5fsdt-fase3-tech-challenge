@@ -142,76 +142,27 @@ Após esse carregamento inicial, os endpoints da API funcionam normalmente. Reco
 **API URL**: https://challenge-2wqh.onrender.com
 **WEB URL**:
 
----
+# ⛬ Experiências e Desafios
 
----
+O desenvolvimento desta aplicação Web de Blog foi um exercício robusto de engenharia de software, focado na integração de tecnologias state-of-the-art e na aplicação de padrões de desenvolvimento de alta maturidade. Isso exigiu um planejamento meticuloso e uma arquitetura de código bem definida.
 
-# React + TypeScript + Vite
+## Arquitetura de Componentes e Gerenciamento de Estado
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um desafio central foi a gestão de complexidade de estado no React. Implementei uma estrutura modularizada e estrita utilizando hooks e types, separando responsabilidades claramente entre camadas (components, pages, hooks e types). Essa decisão arquitetural foi crucial para garantir a legibilidade, manutenibilidade e, primariamente, a escalabilidade do frontend, mitigando o risco de acúmulo de dívida técnica.
 
-Currently, two official plugins are available:
+## Infraestrutura, Containerização e DevOps
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A containerização completa da aplicação, incluindo a orquestração de rede entre os containers do frontend, API e banco de dados via Docker e Docker Compose, representou um marco significativo. O domínio sobre a definição de networks e volumes foi fundamental para estabelecer um ambiente de desenvolvimento e produção isomorfo e funcional.
 
-## Expanding the ESLint configuration
+A automação do workflow de entrega através do CI/CD foi outro pilar do projeto. Utilizei GitHub Actions para configurar pipelines que automatizam testes, build da imagem Docker e deploy para a plataforma Render. O tuning constante desses pipelines resultou em um fluxo de deployment confiável e de integração contínua (CI) que garante a rastreabilidade e a qualidade da entrega de código.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Ganhos de Proficiência e Boas Práticas
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+O projeto consolidou a experiência prática em conceitos essenciais para o ciclo de vida do software:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Qualidade de Código: Reforço das boas práticas com o uso de ESLint, Prettier e TypeScript para garantir coerência e segurança de tipos.
+- Gerenciamento de Estado: Profundo entendimento e aplicação do Context API do React para gestão eficiente de estado global/parcial.
+- Versionamento: Proficiência em Git Flow ou GitHub Flow para versionamento e colaboração assíncrona.
+- Experiência do Usuário: Implementação de um design responsivo para garantir acessibilidade e usabilidade em diversas plataformas.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+Em síntese, este projeto foi uma prova de conceito abrangente sobre como engenheirar e entregar uma solução full-stack moderna, partindo da definição arquitetural de componentes até a entrega contínua em ambiente de nuvem. O resultado final é uma aplicação robusta, performática e preparada para a sustentação em produção.
